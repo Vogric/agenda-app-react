@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import uuid from "uuid/v4";
 
 const Formulario = () => {
   const [state, setState] = useState({
@@ -30,6 +31,8 @@ const Formulario = () => {
       setError(true);
       return;
     }
+    state.id = uuid();
+    console.log(state);
   };
 
   const [error, setError] = useState(false);
