@@ -7,9 +7,9 @@ body {
   font-family: sans-serif;
   background-image: linear-gradient(
     -225deg,
-    #a445b2 0%,
-    #d41872 52%,
-    #ff0066 100%
+    #000000 0%,
+    #000000 52%,
+    #00e6ee81 100%
   );
   min-height: 100%;
   padding-bottom: 5rem;
@@ -20,9 +20,7 @@ h2 {
   padding: 3rem 0;
   text-align: center;
 
-  text-transform: uppercase;
-
-  font-family: "Staatliches", cursive;
+  font-family: "Roboto", sans-serif;
   letter-spacing: 1px;
 }
 .lista-citas .media {
@@ -43,6 +41,12 @@ h2 {
   font-weight: bold;
 }
 
+h1 {
+  font-size: 8rem;
+  margin-top: 85px;
+  font-weight: bold;
+}
+
 label {
   color: white;
 }
@@ -59,14 +63,16 @@ input[type="time"] {
 }
 
 .cita {
+  margin: 2rem;
   padding: 2rem;
-  background: white;
-  border-bottom: 1px solid #e1e1e1;
+  background-color: rgba(255, 255, 255, 0.931);
+  border-radius: 10px;
   color: black;
 }
 
 .cita p {
   font-weight: bold;
+  font-size: 2.2rem;
   margin-bottom: 0.8rem;
 }
 .cita p span {
@@ -80,19 +86,39 @@ input[type="time"] {
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
 }
+
+.citas {
+  margin-bottom: 4.5rem;
+}
+
 .button.eliminar,
 .button.eliminar:hover {
   background-color: #c10059;
   color: white;
   margin-top: 2rem;
+  font-size: 1.4rem;
+}
+
+.button-success,
+.button-success:hover {
+  background-color: #0d901f;
+  color: white;
+  margin-top: 2rem;
+  font-size: 1.4rem;
 }
 
 .alerta-error {
-  background-color: white;
-  color: red;
+  background-color: rgba(184, 9, 9, 0.609);
+  color: rgb(255, 255, 255);
   padding: 1rem;
   font-size: 2rem;
   text-transform: uppercase;
   text-align: center;
-  font-family: "Staatliches", cursive;
+  font-family: Helvetica, sans-serif;
+}
+
+.signature {
+  padding: 3rem;
+  color: rgba(255, 255, 255, 0.555);
+  text-align: end;
 }

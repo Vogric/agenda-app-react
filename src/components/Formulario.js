@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import PropTypes from "prop-types";
 
 const Formulario = ({ crearCita }) => {
   const [state, setState] = useState({
-    mascota: "",
-    propietario: "",
-    fecha: "",
-    hora: "",
-    sintomas: "",
+    nameEvent: "",
+    date: "",
+    hour: "",
+    description: "",
   });
 
   const actualizarState = (e) => {
@@ -17,16 +17,15 @@ const Formulario = ({ crearCita }) => {
     });
   };
 
-  const { mascota, propietario, fecha, hora, sintomas } = state;
+  const { nameEvent, date, hour, description } = state;
 
   const submitCita = (e) => {
     e.preventDefault();
     if (
-      mascota.trim() === "" ||
-      propietario.trim() === "" ||
-      fecha.trim() === "" ||
-      hora.trim() === "" ||
-      sintomas.trim() === ""
+      nameEvent.trim() === "" ||
+      date.trim() === "" ||
+      hour.trim() === "" ||
+      description.trim() === ""
     ) {
       setError(true);
       return;
@@ -34,11 +33,10 @@ const Formulario = ({ crearCita }) => {
     state.id = uuidv4();
     crearCita(state);
     setState({
-      mascota: "",
-      propietario: "",
-      fecha: "",
-      hora: "",
-      sintomas: "",
+      nameEvent: "",
+      date: "",
+      hour: "",
+      description: "",
     });
   };
 
@@ -46,58 +44,54 @@ const Formulario = ({ crearCita }) => {
 
   return (
     <>
-      <h2>Crear cita</h2>
+      <h2>Add an event to your agenda</h2>
       <form onSubmit={submitCita}>
-        <label>Nombre mascota</label>
+        <label>Name of the event</label>
         <input
           type="text"
-          name="mascota"
+          name="nameEvent"
           className="u-full-width"
-          placeholder="Nombre mascota"
+          placeholder="Name of the event"
           onChange={actualizarState}
-          value={mascota}
+          value={nameEvent}
         />
-        <label>Nombre dueño</label>
-        <input
-          type="text"
-          name="propietario"
+        <label>Description</label>
+        <textarea
+          name="description"
+          placeholder="Insert a description"
           className="u-full-width"
-          placeholder="Nombre dueño de la mascota"
           onChange={actualizarState}
-          value={propietario}
-        />
-        <label>Fecha</label>
+          value={description}
+        ></textarea>
+        <label>Date</label>
         <input
           type="date"
-          name="fecha"
+          name="date"
           className="u-full-width"
           onChange={actualizarState}
-          value={fecha}
+          value={date}
         />
-        <label>Hora</label>
+        <label>Hour</label>
         <input
           type="time"
-          name="hora"
+          name="hour"
           className="u-full-width"
           onChange={actualizarState}
-          value={hora}
+          value={hour}
         />
-        <label>Sintomas</label>
-        <textarea
-          name="sintomas"
-          className="u-full-width"
-          onChange={actualizarState}
-          value={sintomas}
-        ></textarea>
-        <button tyoe="submit" className="u-full-width button-primary">
-          Agregar cita
+        <button type="submit" className="u-full-width button-success ">
+          Add Event
         </button>
         {error ? (
-          <p className="alerta-error">Todos los campos son obligatorios</p>
+          <p className="alerta-error animate__animated animate__zoomIn">
+            Make sure you complete everything
+          </p>
         ) : null}
       </form>
     </>
   );
 };
-
+Formulario.propTypes = {
+  crearCita: PropTypes.func.isRequired,
+};
 export default Formulario;
