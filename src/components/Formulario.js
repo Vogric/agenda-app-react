@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import uuid from "uuid/v4";
+import { v4 as uuidv4 } from "uuid";
 
-const Formulario = () => {
+const Formulario = ({ crearCita }) => {
   const [state, setState] = useState({
     mascota: "",
     propietario: "",
@@ -31,8 +31,15 @@ const Formulario = () => {
       setError(true);
       return;
     }
-    state.id = uuid();
-    console.log(state);
+    state.id = uuidv4();
+    crearCita(state);
+    setState({
+      mascota: "",
+      propietario: "",
+      fecha: "",
+      hora: "",
+      sintomas: "",
+    });
   };
 
   const [error, setError] = useState(false);
