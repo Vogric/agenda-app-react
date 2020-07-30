@@ -6,15 +6,14 @@ const Cita = ({ cita, eliminarCita }) => {
       <p>
         Name of the event: <span> {cita.nameEvent} </span>
       </p>
-
+      <p>
+        Description: <span> {cita.description} </span>
+      </p>
       <p>
         Date: <span> {cita.date} </span>
       </p>
       <p>
         Hour: <span> {cita.hour} </span>
-      </p>
-      <p>
-        Description: <span> {cita.description} </span>
       </p>
 
       <button
